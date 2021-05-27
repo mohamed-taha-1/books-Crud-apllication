@@ -4,7 +4,7 @@ import Book  from '../component/Book';
 import {connect} from 'react-redux';
 import {fetchBooks} from '../actions/book.action';
 import {history} from '../index';
-
+import {deleteBook} from '../actions/book.action';
 class Books extends Component {
     constructor(props){
         super(props);
@@ -17,15 +17,15 @@ class Books extends Component {
 
 
 
-    // handleEdit(Book){
-    //     history.push({
-    //         pathname:`/edit/${Book.title}`,
-    //         state:{
-    //             book:Book,
+    handleEdit(Book){
+        history.push({
+            pathname:`/edit/${Book.id}`,
+            state:{
+                book:Book,
 
-    //         }
-    //     })
-    // }
+            }
+        })
+    }
 
     render(){
         return(
@@ -41,9 +41,9 @@ class Books extends Component {
                     <tbody>
                         {
                            this.props.books.map(book=>{
-                               console.log(book.title);
+                               console.log(book.id);
                                return(
-                                <Book key={Math.round()*3} book={book}  title={book.title}  auther={book.auther}  year={book.year}  />
+                                <Book key={Math.round()*3} book={book} onDelete={this.props.onDelete} title={book.title} onEdit={this.handleEdit.bind(this)} auther={book.auther}  year={book.year}  />
                                );
                                
                            })
@@ -66,6 +66,10 @@ const mapDispatchToProps=(dispatch)=>{
     return{
         onFetch:()=>{
             dispatch(fetchBooks())
+        },
+
+        onDelete:(id)=>{
+            dispatch(deleteBook(id))
         }
     }
 }

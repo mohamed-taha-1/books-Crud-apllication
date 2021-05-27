@@ -26,9 +26,12 @@ const defaultState= {
 
 const booksReducer=(state= defaultState, action)=>{
     switch(action.type){
-        // case EDIT_BOOK_SUCCESS:
-        //     const updateBook = state.books.filter(book => book.title !== action.payload.title  );
-        //     return{...state ,books:[...updateBook,action.payload]};
+        case DELETE_BOOK_SUCCESS:
+            const filterBook= state.books.filter(book=> book.id !== action.payload.id);
+            return {...state , books:filterBook};
+        case EDIT_BOOK_SUCCESS:
+            const updateBook = state.books.filter(book => book.id !== action.payload.id );
+            return{...state ,books:[...updateBook]};
 
         case ADD_BOOK_SUCCESS:
             return{...state ,books:[...state.books,action.payload]};
