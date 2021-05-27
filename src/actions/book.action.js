@@ -33,39 +33,37 @@ export const createBookSuccess=(data)=>{
     }
 }
 
-const url='https://books-b372a-default-rtdb.firebaseio.com/books.json';
+const url='https://books-b372a-default-rtdb.firebaseio.com/books';
 
 
 export const createBook=(book)=>{
 
-    // if(book.title){
+    if(book.id){
 
-    //     // edit if the book is exist and has and title 
+        // edit if the book is exist and has and title 
 
-    //     const data = {
-    //         title:book.title,
-    //         auther:book.auther,
-    //         year:book. year
-    //     };
+        const data = {
+            title:book.title,
+            auther:book.auther,
+            year:book. year
+        };
 
-
-    //     return (dispatch)=>{
-    //         dispatch(editBook(data));
-    //     }
-
+        return (dispatch)=>{
+            dispatch(editBook(data));
+        }
 
 
 
-    // }else{
 
-    const data={
-        id:Math.random()*3,
+    }else{
+
+     const data={
         title:book.title,
         auther:book.auther,
         year:book. year
-    };
+      };
 
-    return(dispatch)=>{
+     return(dispatch)=>{
 
         return axios.post('https://books-b372a-default-rtdb.firebaseio.com/books.json',data)
         .then( res=>{
@@ -78,7 +76,7 @@ export const createBook=(book)=>{
 
        
     }
-
+   }
 }
 
 
@@ -87,37 +85,57 @@ export const createBook=(book)=>{
 
 
 
-// export const editBookSuccess=(data)=>{
+export const editBookSuccess=(data)=>{
 
-//     return{
-//         type:EDIT_BOOK_SUCCESS,
-//         payload:data,
-//     }
-// }
-
-
+    return{
+        type:EDIT_BOOK_SUCCESS,
+        payload:data,
+    }
+}
 
 
-// export const editBook=(data)=>{
-//     return(dispatch)=>{
 
-//         return axios.put('https://books-b372a-default-rtdb.firebaseio.com/books.json',data)
-//         .then( res=>{
-//             // console.log(res.data);
-            
-//             dispatch(editBookSuccess(res.data));
-//             history.push('/');
 
-//         }).catch(err=>{console.log(err)});
+export const editBook=(data)=>{
+    return(dispatch)=>{
+
+        const id= data.id;
+        
+        return axios.put(`https://books-b372a-default-rtdb.firebaseio.com/books/${id}.json`,data)
+        .then(res=>{
+            dispatch(editBookSuccess(res.data));
+             history.push('/'); 
+        }).catch(err=>{console.log(err)});
 
        
-//     }
+    }
 
 
-// }
+}
 
 
 // delete------------------------------------------------------------
+
+export  const deleteBookSuccess=(id)=>{
+    return {
+        type:DELETE_BOOK_SUCCESS,
+        payload:{
+            id:id
+        }
+    }
+}
+
+
+export const deleteBook=(id)=>{
+    return (dispatch)=>{
+        return axios.delete(`${url}/${id}.json`).then(()=>{
+            dispatch(deleteBookSuccess(id));
+        }).catch(err=>{
+            console.log("can not delte this item ",err);
+        })
+    }
+}
+
 
 
 // fetch --------------------------------------------------------------

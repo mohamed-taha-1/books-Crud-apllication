@@ -16,7 +16,7 @@ class Nav extends Component{
 
   render(){
       return(
-        <div>
+        <div className="button">
         {
             this.props.pathName==='/' ?  
             <Link to="/create">Add  New </Link> :''

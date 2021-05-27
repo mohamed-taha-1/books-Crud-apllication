@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import React ,{Component} from 'react';
 import Books from './containers/Books';
 import CreateBook from './containers/CreateBook';
@@ -45,7 +45,7 @@ notifyPathName(pathName){
           <Books />
         </Route>
         <Route path="/create"  component={CreateBook}  exact/>
-        {/* <Route path="/edit/:title" exact component={(props)=> <CreateBook  {...props}/>}  /> */}
+        <Route path="/edit/:id" exact component={(props)=> <CreateBook  {...props}/>}  />
       </Switch>
     </div>
     </Router>

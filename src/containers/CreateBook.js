@@ -42,18 +42,19 @@ class CreateBook extends Component {
    }
 
 
-//    componentWillMount(){
-//        const props=this.props;
-//        if(props.location && props.location.state){
-//            const book= props.location.state.book;
+   componentWillMount(){
+       const props=this.props;
+       if(props.location && props.location.state){
+           const book= props.location.state.book;
 
-//            this.setState({
-//             title: book.title ,
-//             auther: book.auther,
-//             year: book.year
-//            })
-//        }
-//    }
+           this.setState({
+            id:book.id,
+            title: book.title ,
+            auther: book.auther,
+            year: book.year
+           })
+       }
+   }
 
     render(){
         return(
