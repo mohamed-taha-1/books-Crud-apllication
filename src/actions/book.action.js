@@ -38,11 +38,12 @@ const url='https://books-b372a-default-rtdb.firebaseio.com/books';
 
 export const createBook=(book)=>{
 
-    if(book.id){
+    if( book.id){
 
         // edit if the book is exist and has and title 
 
         const data = {
+            id:book.id,
             title:book.title,
             auther:book.auther,
             year:book. year
@@ -162,7 +163,21 @@ const normalizeResponse=(data)=>{
 
     return arr;
 }
+
+
+
+
+
+
+
+
+
 export const fetchBooks=()=>{
+
+    
+
+
+
     return (dispatch)=>{
         
     
@@ -173,14 +188,15 @@ export const fetchBooks=()=>{
                 
                
             try{
-                const fetchedOrders = [];
-                for ( let key in Response.data ) {
-                    fetchedOrders.push( {
+                
+                const NextIterator = [];
+                for ( let key in Response.data) { // if has next iterator 
+                    NextIterator.push( {
                         ...Response.data[key],
                         id: key
                     } );
                 }
-                dispatch(fetchBookSuccess(fetchedOrders));
+                dispatch(fetchBookSuccess(NextIterator));
             
             }catch{
                 console.log("error in passed data ");

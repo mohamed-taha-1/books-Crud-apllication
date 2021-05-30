@@ -16,10 +16,12 @@ class Nav extends Component{
 
   render(){
       return(
-        <div className="button">
+        <div className="nav-section">
+        <p id='p'>Create your List of books</p>
+
         {
             this.props.pathName==='/' ?  
-            <Link to="/create">Add  New </Link> :''
+            <Link to="/create" className="nav-link col-sm-1 ">Add  New </Link> :''
         }
         
         </div>
