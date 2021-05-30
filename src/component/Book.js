@@ -8,10 +8,10 @@ const Book =({year, auther,title,onEdit, onDelete,book})=>{
     <td>{auther}</td>
     <td>{year}</td>
     <td>
-        <button type="button " className="btn btn-danger" onClick={()=> onDelete(book.id)}>
+        <button type="button " className="btn btn-outline-danger btn-lg col-sm-3" onClick={()=> onDelete(book.id)}>
                 Delete
         </button> 
-         <button type="button " className="btn button btn-default" onClick={()=>onEdit(book)}>
+         <button type="button " className="btn  btn-outline-warning  btn-lg col-sm-3" onClick={()=>onEdit(book)}>
                 Edit
         </button>
     </td>

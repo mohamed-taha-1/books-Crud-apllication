@@ -58,19 +58,20 @@ class CreateBook extends Component {
 
     render(){
         return(
-            <div className="create-book">
+            <div className="create-book   py-5 mx-auto " >
                 <form onSubmit={this.handleSubmit.bind(this)}>
-                    <div className="form-group">
+                    <div className="form-group col-sm-11">
                         <input  
                             type="text"
-                            className="form-control"
+                            className="form-control "
                             name="title"
                             placeholder="Enter Title"
                             onChange={this.handleChange.bind(this)}
                             value={this.state.title}
+                            required
                         />
                     </div>
-                    <div className="form-group">
+                    <div className="form-group col-sm-11">
                     <input  
                             type="text"
                             className="form-control"
@@ -78,9 +79,10 @@ class CreateBook extends Component {
                             placeholder="Enter Auther"
                             onChange={this.handleChange.bind(this)}
                             value={this.state.auther}
+                            required
                         />
                     </div>
-                    <div className="form-group">
+                    <div className="form-group col-sm-11">
                     <input  
                             type="text"
                             className="form-control"
@@ -88,11 +90,12 @@ class CreateBook extends Component {
                             placeholder="Enter Year published"
                             onChange={this.handleChange.bind(this)}
                             value={this.state.year}
+                            required
                         />  
                     </div>
-                    <div className="form-group">
-                        <button type="submit" className="btn btn-primary">Add</button>
-                        <button type="button" className="btn btn-default" onClick={this.handelRest.bind(this)}>Cancel</button>
+                    <div className="form-group col-sm-11">
+                        <button type="submit" className="btn btn-outline-primary btn-lg">Add</button>
+                        <button type="button" className="btn btn-default  btn-lg" onClick={this.handelRest.bind(this)}>Cancel</button>
                     </div>
                 </form>
             </div>

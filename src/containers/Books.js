@@ -30,6 +30,7 @@ class Books extends Component {
     render(){
         return(
             <div>
+            
                 <table className="table table-striped">
                     <thead>
                      
@@ -40,13 +41,14 @@ class Books extends Component {
                     </thead>
                     <tbody>
                         {
+                     
                            this.props.books.map(book=>{
-                               console.log(book.id);
+                               {/* console.log(book.id); */} 
+                              
                                return(
                                 <Book key={Math.round()*3} book={book} onDelete={this.props.onDelete} title={book.title} onEdit={this.handleEdit.bind(this)} auther={book.auther}  year={book.year}  />
                                );
-                               
-                           })
+                           }) 
                         }
                     </tbody>
                 </table>
