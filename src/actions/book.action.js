@@ -21,6 +21,7 @@ import {books} from '../data';
 import  {history } from '../index';
 
 import axios   from 'axios';
+import FacadeApi from './FacadeApi';
 
 // create ----------------------------------------------------------
 
@@ -150,19 +151,7 @@ export const fetchBookSuccess=(data)=>{
 
 };
 
-const normalizeResponse=(data)=>{
-    const arr=data.map(item =>{
-        const key =Object.keys(item);
 
-        key.forEach(k =>{
-            item[k.toLowerCase()]=item[k];
-            delete item[k];
-        });
-        return item;
-    });
-
-    return arr;
-}
 
 
 
@@ -179,34 +168,45 @@ export const fetchBooks=()=>{
 
 
     return (dispatch)=>{
-        
-    
-        
-        return  axios.get('https://books-b372a-default-rtdb.firebaseio.com/books.json')
-            .then(Response=>{
-                // const data= normalizeResponse(Response.data);
+          
+        // return  axios.get('https://books-b372a-default-rtdb.firebaseio.com/books.json')
+        //     .then(Response=>{
+        //         // const data= normalizeResponse(Response.data);
                 
                
-            try{
+        //     try{
                 
-                const NextIterator = [];
-                for ( let key in Response.data) { // if has next iterator 
-                    NextIterator.push( {
-                        ...Response.data[key],
-                        id: key
-                    } );
-                }
-                dispatch(fetchBookSuccess(NextIterator));
+        //         const NextIterator = [];
+        //         for ( let key in Response.data) { // if has next iterator 
+        //             NextIterator.push( {
+        //                 ...Response.data[key],
+        //                 id: key
+        //             } );
+        //         }
+        //         dispatch(fetchBookSuccess(NextIterator));
             
-            }catch{
-                console.log("error in passed data ");
-            }
+        //     }catch{
+        //         console.log("error in passed data ");
+        //     }
 
             
 
 
-            }).catch(err=>{
-                    console.log(err);
-            });
+        //     }).catch(err=>{
+        //             console.log(err);
+        //     });
+
+
+        const api = new FacadeApi();   // create new object from facad api
+ 
+        api.get('https://books-b372a-default-rtdb.firebaseio.com/books.json')
+        .then(data => {
+            dispatch(fetchBookSuccess(data));
+        })
+        .catch(error => {
+            console.error(error);
+        });
     };
 }
+
+

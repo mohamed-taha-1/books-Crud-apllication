@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Book =({year, auther,title,onEdit, onDelete,book})=>{
+const FactoryBook =({year, auther,title,onEdit, onDelete,book})=>{
   return(
     <tr >
     <td>{title}</td>
@@ -20,4 +20,4 @@ const Book =({year, auther,title,onEdit, onDelete,book})=>{
 
 };
 
-export default Book;
+export default FactoryBook;

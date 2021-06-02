@@ -1,5 +1,5 @@
 import React , {Component}from 'react';
-import Book from '../component/Book';
+import {FactoryBook as Book} from '../component/FactoryBook';
 // import {books} from '../data';
 import './CreateBook.css';
 import {createBook} from '../actions/book.action';
