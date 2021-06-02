@@ -9,6 +9,7 @@ class Nav extends Component{
     }
     
     
+    
   componentWillMount(){
       this.props.notifyPathName(window.location.pathname)
   };

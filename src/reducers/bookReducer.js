@@ -19,12 +19,12 @@ import {
 
 
 const defaultState= {
-    books:[],
+    books:[], //  list of books 
     error:null,
     isLoading:false,
 };
 
-const booksReducer=(state= defaultState, action)=>{
+const booksReducerStrategy=(state= defaultState, action)=>{
     switch(action.type){
         case DELETE_BOOK_SUCCESS:
             const filterBook= state.books.filter(book=> book.id !== action.payload.id);
@@ -42,4 +42,6 @@ const booksReducer=(state= defaultState, action)=>{
     }
 };
 
-export default booksReducer;
+export default  booksReducerStrategy; 
+
+// booksReducer;

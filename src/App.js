@@ -34,14 +34,14 @@ notifyPathName(pathName){
     <div className="App">
 
 
-    
+       
+  
    
       <Switch>
         <Route  path="/"  component={Books  }  exact>
-            
-            <Nav notifyPathName={this.notifyPathName}
+        <Nav notifyPathName={this.notifyPathName}
             pathName={this.state.pathName}
-          /> 
+          />
           <Books />
         </Route>
         <Route path="/create"  component={CreateBook}  exact/>

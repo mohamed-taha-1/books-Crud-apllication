@@ -1,6 +1,6 @@
 import React ,{Component } from 'react';
 // import {books} from '../data'; // data contain books that has been created 
-import Book  from '../component/Book';
+import FactoryBook  from '../component/FactoryBook';
 import {connect} from 'react-redux';
 import {fetchBooks} from '../actions/book.action';
 import {history} from '../index';
@@ -46,7 +46,7 @@ class Books extends Component {
                                {/* console.log(book.id); */} 
                               
                                return(
-                                <Book key={Math.round()*3} book={book} onDelete={this.props.onDelete} title={book.title} onEdit={this.handleEdit.bind(this)} auther={book.auther}  year={book.year}  />
+                                <FactoryBook key={Math.round()*3} book={book} onDelete={this.props.onDelete} title={book.title} onEdit={this.handleEdit.bind(this)} auther={book.auther}  year={book.year}  />
                                );
                            }) 
                         }
